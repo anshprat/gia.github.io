@@ -46,19 +46,6 @@ fontSizeSlider.addEventListener('input', function() {
     console.log(fontSizeValue);
 });
 
-/* <div>Text Color
-  <input type="color" id="font-color-picker" value="#000000">
-  </div>
-  <div>Text background Color
-    <input type="color" id="font-bg-color-picker" value="#ffffff">
-  </div>
-  <div>
-    Text background width
-    <input type="range" id="font-bg-width-slider" min="0" max="100" step="1" value="0">
-  </div>
-  <div>
-    Text background height
-    <input type="range" id="font-bg-height-slider" min="0" max="100" step="1" value="0"></input> */
 
 const fontColorPicker = document.getElementById('font-color-picker');
 fontColorPicker.addEventListener('input', function() {
