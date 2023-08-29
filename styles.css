@@ -79,3 +79,7 @@ body {
 #main-carousel{
   margin-left: 10px;
 }
+
+#bylines {
+  cursor: pointer;
+}

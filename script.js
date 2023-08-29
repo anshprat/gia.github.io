@@ -2,9 +2,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
   var main = new Splide( '#main-carousel', {
   type       : 'fade',
-  heightRatio: 0.4,
-  fixedWidth : 480,
-  fixedHeight: 200,
+  heightRatio: 0.5,
   pagination : false,
   arrows     : false,
   cover      : true,
