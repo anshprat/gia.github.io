@@ -145,7 +145,7 @@ document.getElementById("mex-form").addEventListener("submit", function(event) {
       }
   };
 
-  xhr.open("POST", "http://m3api.e3l.in:8088/copywrite", true); // Replace with your server endpoint
+  xhr.open("POST", "https://m3api.e3l.in/copywrite", true); // Replace with your server endpoint
   xhr.send(formData); // Send the form data
 
 });
