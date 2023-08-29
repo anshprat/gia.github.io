@@ -35,6 +35,73 @@ thumbnails.mount();
   
 } );
 
+
+function update_taglines(result){
+  const bylinesContainer = document.getElementById('bylines');
+  for (const language in result) {
+    if (result.hasOwnProperty(language)) {
+      const bylines = result[language];
+      console.log(`Language: ${language}`);
+      const listItem = document.createElement('li');
+      listItem.textContent = language;
+      bylinesContainer.appendChild(listItem);
+
+      // Loop through each phrase in the language
+      for (const byline of bylines) {
+        const listItem = document.createElement('li');
+        listItem.textContent = byline;
+        listItem.addEventListener('click', function() {
+          overlayText.innerText = byline
+        });
+        bylinesContainer.appendChild(listItem);
+      }
+    }
+  }
+}
+
+const mock_results = `{
+  "English": [
+    "Authentic Thai food with 10% off!",
+    "Enjoy Thai cuisine with 10% discount!",
+    "Savor Thai delicacies at a 10% lower price!"
+  ],
+  "Malay": [
+    "Makanan Thai asli dengan diskaun 10%!",
+    "Nikmati masakan Thai dengan 10% diskaun!",
+    "Nikmati hidangan Thai dengan harga 10% lebih murah!"
+  ],
+  "Bahasa": [
+    "Makanan Thai asli dengan diskon 10%!",
+    "Nikmati hidangan Thai dengan diskon 10%!",
+    "Santap hidangan Thai dengan harga 10% lebih murah!"
+  ],
+  "Vietnamese": [
+    "Đồ ăn Thái chính hiệu giảm giá 10%!",
+    "Thưởng thức ẩm thực Thái với ưu đãi 10%!",
+    "Thưởng thức đặc sản Thái Lan với giá giảm 10%!"
+  ],
+  "Filipino": [
+    "Authentic Thai food na may 10% discount!",
+    "Mag-enjoy ng Thai cuisine sa 10% discount!",
+    "Tikman ang mga pagkaing Thai sa mas mababang presyo na may 10% discount!"
+  ],
+  "Thai": [
+    "อาหารไทยแท้พร้อมส่วนลด 10%!",
+    "สัมผัสรสชาติอาหารไทยพร้อมส่วนลด 10%!",
+    "รับประทานอาหารไทยแสนอร่อยในราคาสุดคุ้ม ลด 10%!"
+  ],
+  "Burmese": [
+    "အမြန်ကျေးဇူးတင်ပါတယ် ထုတ်လုပ်သူများအတွက် 10% လျှော့စျေးကိုပါဝင်ပြီး!",
+    "10% လျှော့စျေးကိုသွားမည့် အမြန်ကျေးဇူးတင်ပါတယ်!",
+    "10% လျှော့စျေးနှင့် အမြန်ကျေးဇူးတင်ပါသည်ဟုတ်ယူသည်ပြီး ထုတ်လုပ်သူများအတွက် အရသာတစ်ခုကိုရယူပါ!"
+  ],
+  "Khmer": [
+    "អាហារនៅថៃដែលមានការបញ្ចុះតម្លៃ 10%!",
+    "សារម្នាក់លួចទស្សនាអាហារថៃដែលមានការបញ្ចុះតម្លៃ 10%!",
+    "សម្រាប់អ្នកដែលចូលរួមទស្សនាអាហារថៃដែលមានតម្លៃទាបជាង 10%!"
+  ]
+}`
+
 // Function to dynamically insert <li> elements into a given <ul> element
 function insertLiElements(count, htmlContent, ulElement) {
   for (let i = 1; i < count; i++) {
@@ -112,7 +179,11 @@ fontBgHeightSlider.addEventListener('input', function() {
 
 document.getElementById("mex-form").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent the form from submitting traditionally
-
+  var checkbox = document.getElementById('mex-mock');
+  if (checkbox.checked) {
+      console.log('Checkbox is checked');
+      return update_taglines(JSON.parse(mock_results));
+  }
   var formData = new FormData(this); // Create a FormData object from the form
 
   var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
@@ -120,26 +191,7 @@ document.getElementById("mex-form").addEventListener("submit", function(event) {
   xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
           var result = JSON.parse(xhr.responseText); // Assign the response from the server to a variable
-          const bylinesContainer = document.getElementById('bylines');
-          for (const language in result) {
-            if (result.hasOwnProperty(language)) {
-              const bylines = result[language];
-              console.log(`Language: ${language}`);
-              const listItem = document.createElement('li');
-              listItem.textContent = language;
-              bylinesContainer.appendChild(listItem);
-
-              // Loop through each phrase in the language
-              for (const byline of bylines) {
-                const listItem = document.createElement('li');
-                listItem.textContent = byline;
-                listItem.addEventListener('click', function() {
-                  overlayText.innerText = byline
-                });
-                bylinesContainer.appendChild(listItem);
-              }
-            }
-          }
+          update_taglines(result);
       }
   };
 
