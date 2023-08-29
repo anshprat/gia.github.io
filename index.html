@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Overlay with Text</title>
+  <title>M^3</title>
   <link rel="stylesheet" href="styles.css">
 
 <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
@@ -72,12 +72,25 @@
       <input type="text" id="textInput" placeholder="Enter your text">
       <button id="applyButton">Apply Text</button>
     </div>
-    <div class="image-container">
-      <img id="selectedImage" src="" alt="Selected Image">
-      <div id="overlayText" class="hidden">Your Text Overlay</div>
-    </div>
   </div>
-  
+
+  <div>Text Size
+  <input type="range" id="font-size-slider" min="12" max="36" step="1" value="16">
+  </div>
+  <div>Text Color
+  <input type="color" id="font-color-picker" value="#ffffff">
+  </div>
+  <div>Text background Color
+    <input type="color" id="font-bg-color-picker" value="#90B699">
+  </div>
+  <div>
+    Text background width
+    <input type="range" id="font-bg-width-slider" min="0" max="100" step="1" value="15">
+  </div>
+  <div>
+    Text background height
+    <input type="range" id="font-bg-height-slider" min="0" max="100" step="1" value="15">
+  </div>
 </body>
 <script src="script.js"></script>
 </html>
