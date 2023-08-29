@@ -1,42 +1,42 @@
-document.addEventListener( 'DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-  var main = new Splide( '#main-carousel', {
-  type       : 'fade',
-  heightRatio: 0.5,
-  pagination : false,
-  arrows     : false,
-  cover      : true,
-} );
+  var main = new Splide('#main-carousel', {
+    type: 'fade',
+    heightRatio: 0.5,
+    pagination: false,
+    arrows: false,
+    cover: true,
+  });
 
-var thumbnails = new Splide( '#thumbnail-carousel', {
-  rewind          : true,
-  fixedWidth      : 104,
-  fixedHeight     : 58,
-  isNavigation    : true,
-  gap             : 10,
-  focus           : 'center',
-  pagination      : false,
-  cover           : true,
-  dragMinThreshold: {
-    mouse: 4,
-    touch: 10,
-  },
-  breakpoints : {
-    640: {
-      fixedWidth  : 66,
-      fixedHeight : 38,
+  var thumbnails = new Splide('#thumbnail-carousel', {
+    rewind: true,
+    fixedWidth: 104,
+    fixedHeight: 58,
+    isNavigation: true,
+    gap: 10,
+    focus: 'center',
+    pagination: false,
+    cover: true,
+    dragMinThreshold: {
+      mouse: 4,
+      touch: 10,
     },
-  },
-} );
+    breakpoints: {
+      640: {
+        fixedWidth: 66,
+        fixedHeight: 38,
+      },
+    },
+  });
 
-main.sync( thumbnails );
-main.mount();
-thumbnails.mount();
-  
-} );
+  main.sync(thumbnails);
+  main.mount();
+  thumbnails.mount();
+
+});
 
 
-function update_taglines(result){
+function update_taglines(result) {
   const bylinesContainer = document.getElementById('bylines');
   for (const language in result) {
     if (result.hasOwnProperty(language)) {
@@ -50,12 +50,37 @@ function update_taglines(result){
       for (const byline of bylines) {
         const listItem = document.createElement('li');
         listItem.textContent = byline;
-        listItem.addEventListener('click', function() {
+        listItem.addEventListener('click', function () {
           overlayText.innerText = byline
         });
         bylinesContainer.appendChild(listItem);
       }
     }
+  }
+}
+
+function saveAs(uri, filename) {
+
+  var link = document.createElement('a');
+
+  if (typeof link.download === 'string') {
+
+    link.href = uri;
+    link.download = filename;
+
+    //Firefox requires the link to be in the body
+    document.body.appendChild(link);
+
+    //simulate click
+    link.click();
+
+    //remove the link when done
+    document.body.removeChild(link);
+
+  } else {
+
+    window.open(uri);
+
   }
 }
 
@@ -107,7 +132,7 @@ function insertLiElements(count, htmlContent, ulElement) {
   for (let i = 1; i < count; i++) {
     const liElement = document.createElement('li');
     liElement.className = 'splide__slide';
-    liElement.innerHTML = '<img src="thumbnail0'+i+'.jpg" alt="">';
+    liElement.innerHTML = '<img src="thumbnail0' + i + '.jpg" alt="">';
     ulElement.appendChild(liElement);
   }
 }
@@ -134,65 +159,80 @@ const textInput = document.getElementById('textInput');
 const applyButton = document.getElementById('applyButton');
 const selectedImage = document.getElementById('selectedImage');
 const overlayText = document.getElementById('overlayText');
+const saveCreative = document.getElementById('saveCreative');
 
 applyButton.addEventListener('click', () => {
   overlayText.innerText = textInput.value;
   overlayText.classList.remove('hidden');
 });
 
+saveCreative.addEventListener('click', () => {
+
+  const getScreenshotOfElement = async (element) => {
+    const canvas = await html2canvas(element)
+    saveAs(canvas.toDataURL(), 'm3-creative.png');
+
+  }
+
+  const creative = document.getElementById('main-carousel')
+  getScreenshotOfElement(creative)
+
+
+});
+
 
 const fontSizeSlider = document.getElementById('font-size-slider');
 const targetParagraph = document.getElementById('overlayText');
 
-fontSizeSlider.addEventListener('input', function() {
-    const fontSizeValue = fontSizeSlider.value + 'px';
-    targetParagraph.style.fontSize = fontSizeValue;
-    console.log(fontSizeValue);
+fontSizeSlider.addEventListener('input', function () {
+  const fontSizeValue = fontSizeSlider.value + 'px';
+  targetParagraph.style.fontSize = fontSizeValue;
+  console.log(fontSizeValue);
 });
 
 
 const fontColorPicker = document.getElementById('font-color-picker');
-fontColorPicker.addEventListener('input', function() {
+fontColorPicker.addEventListener('input', function () {
   const fontColorValue = fontColorPicker.value;
   targetParagraph.style.color = fontColorValue;
 
 });
 
 const fontBgColorPicker = document.getElementById('font-bg-color-picker');
-fontBgColorPicker.addEventListener('input', function() {
+fontBgColorPicker.addEventListener('input', function () {
   const fontBgColorValue = fontBgColorPicker.value;
   targetParagraph.style.backgroundColor = fontBgColorValue;
 });
 
 const fontBgWidthSlider = document.getElementById('font-bg-width-slider');
-fontBgWidthSlider.addEventListener('input', function() {
+fontBgWidthSlider.addEventListener('input', function () {
   const fontBgWidthValue = fontBgWidthSlider.value + 'px';
   targetParagraph.style.width = fontBgWidthValue;
 });
 
 const fontBgHeightSlider = document.getElementById('font-bg-height-slider');
-fontBgHeightSlider.addEventListener('input', function() {
+fontBgHeightSlider.addEventListener('input', function () {
   const fontBgHeightValue = fontBgHeightSlider.value + 'px';
   targetParagraph.style.height = fontBgHeightValue;
 });
 
 
-document.getElementById("mex-form").addEventListener("submit", function(event) {
+document.getElementById("mex-form").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting traditionally
   var checkbox = document.getElementById('mex-mock');
   if (checkbox.checked) {
-      console.log('Checkbox is checked');
-      return update_taglines(JSON.parse(mock_results));
+    console.log('Checkbox is checked');
+    return update_taglines(JSON.parse(mock_results));
   }
   var formData = new FormData(this); // Create a FormData object from the form
 
   var xhr = new XMLHttpRequest(); // Create a new XMLHttpRequest object
 
-  xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          var result = JSON.parse(xhr.responseText); // Assign the response from the server to a variable
-          update_taglines(result);
-      }
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var result = JSON.parse(xhr.responseText); // Assign the response from the server to a variable
+      update_taglines(result);
+    }
   };
 
   xhr.open("POST", "https://m3api.e3l.in/copywrite", true); // Replace with your server endpoint
@@ -204,7 +244,7 @@ document.getElementById("mex-form").addEventListener("submit", function(event) {
 const deleteButton = document.getElementById('deleteTaglines');
 const myList = document.getElementById('bylines');
 
-deleteButton.addEventListener('click', function() {
+deleteButton.addEventListener('click', function () {
   while (myList.firstChild) {
     myList.removeChild(myList.firstChild);
   }
