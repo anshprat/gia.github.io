@@ -75,12 +75,12 @@ fontBgColorPicker.addEventListener('input', function() {
 
 const fontBgWidthSlider = document.getElementById('font-bg-width-slider');
 fontBgWidthSlider.addEventListener('input', function() {
-  const fontBgWidthValue = fontBgWidthSlider.value + '%';
+  const fontBgWidthValue = fontBgWidthSlider.value + 'px';
   targetParagraph.style.width = fontBgWidthValue;
 });
 
 const fontBgHeightSlider = document.getElementById('font-bg-height-slider');
 fontBgHeightSlider.addEventListener('input', function() {
-  const fontBgHeightValue = fontBgHeightSlider.value + '%';
+  const fontBgHeightValue = fontBgHeightSlider.value + 'px';
   targetParagraph.style.height = fontBgHeightValue;
 });
