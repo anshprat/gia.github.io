@@ -83,3 +83,110 @@ body {
 #bylines {
   cursor: pointer;
 }
+
+
+
+/* Path: styles.css */
+
+/* Reset some default styles */
+body, p, ul, ol, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling for the container */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styling for the text container */
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Styling for buttons */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for input elements */
+input[type="text"], input[type="color"], input[type="range"], input[type="checkbox"] {
+  margin: 5px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styling for text color picker */
+#font-color-picker {
+  width: 40px;
+}
+
+/* Styling for text background color picker */
+#font-bg-color-picker {
+  width: 40px;
+}
+
+/* Styling for text background width and height sliders */
+#font-bg-width-slider, #font-bg-height-slider {
+  width: 100%;
+}
+
+/* Styling for mex-text-input section */
+.mex-text-input {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Styling for mex-form */
+#mex-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Styling for Generate Taglines button */
+#mex-form button[type="submit"] {
+  align-self: flex-start;
+  background-color: #90B699;
+}
+
+/* Styling for Delete Taglines button */
+#deleteTaglines {
+  align-self: flex-start;
+  background-color: #ff6347;
+}
+
+/* Styling for result section */
+#gairesult {
+  margin-top: 20px;
+}
+
+/* Styling for bylines list */
+#bylines {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling for bylines list items */
+#bylines li {
+  margin-bottom: 5px;
+  color: #333;
+}
