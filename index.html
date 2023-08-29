@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Overlay with Text</title>
+  <link rel="stylesheet" href="styles.css">
+
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+<script>
+	document.addEventListener( 'DOMContentLoaded', function () {
+
+    var main = new Splide( '#main-carousel', {
+    type       : 'fade',
+    heightRatio: 0.3,
+    width: '45%',
+    pagination : false,
+    arrows     : false,
+    cover      : true,
+  } );
+  
+  var thumbnails = new Splide( '#thumbnail-carousel', {
+    rewind          : true,
+    fixedWidth      : 104,
+    fixedHeight     : 58,
+    isNavigation    : true,
+    gap             : 10,
+    focus           : 'center',
+    pagination      : false,
+    cover           : true,
+    dragMinThreshold: {
+      mouse: 4,
+      touch: 10,
+    },
+    breakpoints : {
+      640: {
+        fixedWidth  : 66,
+        fixedHeight : 38,
+      },
+    },
+  } );
+  
+  main.sync( thumbnails );
+  main.mount();
+  thumbnails.mount();
+    
+	} );
+</script>
+</head>
+<body>
+
+  <section id="main-carousel" class="splide">
+
+    <div class="splide__track">
+      
+          <ul class="splide__list">
+          </ul>
+    </div>
+    <div id="overlayText">Crave. Click. Enjoy. GrabFood!</div>
+
+  </section>
+   <section id="thumbnail-carousel" class="splide">
+     <div class="splide__track">
+           <ul class="splide__list">
+           </ul>
+     </div>
+   </section>
+
+   <div class="container">
+    <div class="text-container">
+      <input type="text" id="textInput" placeholder="Enter your text">
+      <button id="applyButton">Apply Text</button>
+    </div>
+    <div class="image-container">
+      <img id="selectedImage" src="" alt="Selected Image">
+      <div id="overlayText" class="hidden">Your Text Overlay</div>
+    </div>
+  </div>
+  
+</body>
+<script src="script.js"></script>
+</html>
