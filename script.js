@@ -293,4 +293,5 @@ languages.forEach(function(language) {
 
   container.appendChild(checkbox);
   container.appendChild(label);
+  container.appendChild(document.createElement("br"));
 });
