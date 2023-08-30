@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M3</title>
   <link rel="stylesheet" href="styles.css">
 
-<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
-<script src='https://html2canvas.hertzen.com/dist/html2canvas.min.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+  <script src='https://html2canvas.hertzen.com/dist/html2canvas.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
 </head>
+
 <body>
 
   <section id="main-carousel" class="splide">
 
     <div class="splide__track">
-      
-          <ul class="splide__list">
-          </ul>
+
+      <ul class="splide__list">
+      </ul>
     </div>
+
     <div id="overlayText">Crave. Click. Enjoy. GrabFood!</div>
 
   </section>
-   <section id="thumbnail-carousel" class="splide">
-     <div class="splide__track">
-           <ul class="splide__list">
-           </ul>
-     </div>
-   </section>
+  <section id="thumbnail-carousel" class="splide">
+    <div class="splide__track">
+      <ul class="splide__list">
+      </ul>
+    </div>
+  </section>
 
-   <div class="container">
+  <div class="container">
     <div class="text-container">
       <input type="text" id="textInput" placeholder="Crave. Click. Enjoy. GrabFood!">
       <button id="applyButton">Custom Text</button>
@@ -38,38 +41,73 @@
     </div>
   </div>
 
-  <div>Text Size
-  <input type="range" id="font-size-slider" min="12" max="36" step="1" value="16">
-  </div>
-  <div>Text Color
-  <input type="color" id="font-color-picker" value="#ffffff">
-  </div>
-  <div>Text background Color
-    <input type="color" id="font-bg-color-picker" value="#90B699">
-  </div>
-  <div>
-    Text background width
-    <input type="range" id="font-bg-width-slider" min="0" max="460" step="1" value="150">
-  </div>
-  <div>
-    Text background height
-    <input type="range" id="font-bg-height-slider" min="0" max="180" step="1" value="150">
+  <div id="control-containers">
+    <div id="control-container">
+
+      <div id="label-left">
+        Text Size
+      </div>
+      <div id="control-right">
+        <input type="range" id="font-size-slider" min="12" max="36" step="1" value="16">
+      </div>
+    </div>
+
+    <div id="control-container">
+
+      <div id="label-left">
+        Text Color
+      </div>
+      <div id="control-right">
+        <input type="color" id="font-color-picker" value="#ffffff">
+      </div>
+    </div>
+    <div id="control-container">
+
+      <div id="label-left">
+        Text background Color
+      </div>
+      <div id="control-right">
+        <input type="color" id="font-bg-color-picker" value="#90B699">
+      </div>
+    </div>
+    <div id="control-container">
+
+      <div id="label-left">
+        Text background width
+      </div>
+      <div id="control-right">
+        <input type="range" id="font-bg-width-slider" min="0" max="460" step="1" value="150">
+      </div>
+    </div>
+
+    <div id="control-container">
+
+      <div id="label-left">
+        Text background height
+      </div>
+      <div id="control-right">
+        <input type="range" id="font-bg-height-slider" min="0" max="180" step="1" value="150">
+      </div>
+    </div>
   </div>
   <div class="mex-text-input">
     <form id="mex-form">
-    <input type="text" name="mex-name" id="mex-name" placeholder="Enter your store name">
-    <input type="text" name="mex-cuisine" id="mex-cuisine" placeholder="Enter your cuisine name">
-    <input type="text" name="mex-discount" id="mex-discount" placeholder="Enter discount % (0-100)">
-    <input type="checkbox" name="mex-mock" id="mex-mock" value="0"> <label for="mex-mock">Mock data</label>
-    <button type="submit">Generate Taglines</button>
-  </form>
-  <button type="submit" id="deleteTaglines">Delete Taglines</button>
+      <input type="text" name="mex-name" id="mex-name" placeholder="Enter your store name">
+      <input type="text" name="mex-cuisine" id="mex-cuisine" placeholder="Enter your cuisine name">
+      <input type="text" name="mex-discount" id="mex-discount" placeholder="Enter discount % (0-100)">
+      <div id="div-mock">
+        <input type="checkbox" name="mex-mock" id="mex-mock" value="0"> <label for="mex-mock">Mock data</label>
+      </div>
+      <button type="submit">Generate Taglines</button>
+    </form>
+    <button type="submit" id="deleteTaglines">Delete Taglines</button>
   </div>
-  
+
   <div id="gairesult">
     <ul id="bylines"></ul>
 
   </div>
 </body>
 <script src="script.js"></script>
+
 </html>

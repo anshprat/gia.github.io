@@ -132,7 +132,7 @@ function insertLiElements(count, htmlContent, ulElement) {
   for (let i = 1; i < count; i++) {
     const liElement = document.createElement('li');
     liElement.className = 'splide__slide';
-    liElement.innerHTML = '<img src="thumbnail0' + i + '.jpg" alt="">';
+    liElement.innerHTML = '<img src="i/thumbnail' + i + '.jpg" alt="">';
     ulElement.appendChild(liElement);
   }
 }
@@ -145,7 +145,7 @@ const thumbnailCarouselUl = document.querySelector('#thumbnail-carousel .splide_
 const htmlContent = '';
 
 // Number of <li> elements to insert
-const liCount = 9; // Change this to the desired number
+const liCount = 30; // Change this to the desired number
 
 // Insert <li> elements into the main carousel
 insertLiElements(liCount, htmlContent, mainCarouselUl);

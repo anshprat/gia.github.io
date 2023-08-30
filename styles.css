@@ -190,3 +190,47 @@ input[type="text"], input[type="color"], input[type="range"], input[type="checkb
   margin-bottom: 5px;
   color: #333;
 }
+
+
+/* Path: styles.css for control items */
+#control-containers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#control-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+
+#label-left {
+  flex: 1;
+  font-weight: bold;
+}
+
+#control-right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Additional styling for input elements */
+input[type="range"] {
+  width: 100%;
+}
+
+input[type="color"] {
+  width: 100px;
+  height: 30px;
+}
+
+#main-carousel.splide {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Adjust the z-index as needed */
+}
