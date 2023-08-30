@@ -84,6 +84,18 @@ function saveAs(uri, filename) {
   }
 }
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const numbers = Array.from({ length: 30 }, (_, index) => index + 1);
+
+for (let i = numbers.length - 1; i > 0; i--) {
+  const j = getRandomInt(0, i);
+  [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+}
+
+
 const mock_results = `{
   "English": [
     "Authentic Thai food with 10% off!",
@@ -132,7 +144,7 @@ function insertLiElements(count, htmlContent, ulElement) {
   for (let i = 1; i < count; i++) {
     const liElement = document.createElement('li');
     liElement.className = 'splide__slide';
-    liElement.innerHTML = '<img src="i/thumbnail' + i + '.jpg" alt="">';
+    liElement.innerHTML = '<img src="i/thumbnail' + numbers[i] + '.jpg" alt="">';
     ulElement.appendChild(liElement);
   }
 }
