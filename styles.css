@@ -199,7 +199,7 @@ input[type="text"], input[type="color"], input[type="range"], input[type="checkb
   gap: 20px;
 }
 
-#control-container {
+.control-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -208,12 +208,12 @@ input[type="text"], input[type="color"], input[type="range"], input[type="checkb
   background-color: #f7f7f7;
 }
 
-#label-left {
+.label-left {
   flex: 1;
   font-weight: bold;
 }
 
-#control-right {
+.control-right {
   flex: 1;
   text-align: right;
 }
@@ -233,4 +233,13 @@ input[type="color"] {
   position: sticky;
   top: 0;
   z-index: 1000; /* Adjust the z-index as needed */
+}
+
+#main-carousel img {
+  max-width: 440px; /* Ensure the image doesn't exceed its parent's width */
+  max-height: 210px; /* Ensure the image doesn't exceed its parent's height */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
 }

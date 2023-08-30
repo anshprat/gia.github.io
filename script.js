@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var main = new Splide('#main-carousel', {
     type: 'fade',
     heightRatio: 0.5,
+    fixedHeight: 210,
+    fixedWidth: 440,
     pagination: false,
     arrows: false,
     cover: true,
@@ -260,4 +262,35 @@ deleteButton.addEventListener('click', function () {
   while (myList.firstChild) {
     myList.removeChild(myList.firstChild);
   }
+});
+
+var languages = [
+  "English",
+  "Malay",
+  "Thai",
+  "Chinese",
+  "Japanese",
+  "Korean",
+  "Vietnamese",
+  "Filipino",
+  "Indonesian",
+  "Burmese",
+  "Khmer"
+];
+
+var container = document.getElementById("control-languages");
+
+languages.forEach(function(language) {
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.name = language;
+  checkbox.id = "lang-" + language.toLowerCase();
+  checkbox.value = "0";
+
+  var label = document.createElement("label");
+  label.textContent = language;
+  label.setAttribute("for", "lang-" + language.toLowerCase());
+
+  container.appendChild(checkbox);
+  container.appendChild(label);
 });
